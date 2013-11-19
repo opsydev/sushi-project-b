@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	xmlns:my="urn:jsptld:/WEB-INF/taglib.tld"
+	xmlns:fn='http://java.sun.com/jsp/jstl/functions'
+	version="2.0">
+	<jsp:directive.page contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8" session="true" />
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+	<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Reporting Engine</title>
+<link href="style.css" rel="stylesheet" media="all"/>
+</head>
+<body>
+	<div class="container">
+		<c:if test="${not empty error }">
+			<div class="error">${ error }</div>
+		</c:if>
+		
+		<form method="post">
+			<label for="namePrefix">Name Prefix:</label> 
+			<input type="text" name="namePrefix" id="namePrefix" value="${ user_name_prefix}"/> 
+			
+			<label for="min_gpa">Minimum GPA:</label> 
+			<input type="text" name="min_gpa" id="min_gpa" value="${user_min_gpa }"/> 
+			
+			<label for="sort_by">Sort By:</label>
+			<select name="sort_by" id="sort_by">
+				<c:forEach var="col" items="${ sessionScope.sort_cols }">
+					<option values="${col }">${col }</option>
+				</c:forEach>
+			</select>
+			<div class="btn-group">
+				<button type="submit" name="get_report">Get Report</button>
+				<button type="submit" name="generate_xml">Generate XML</button>
+			</div>
+		</form>
+
+		<c:if test="${not empty is_post}">
+		<p>We found <em>${fn:length(students)}</em> Results</p>
+		<c:if test="${not empty students}">
+			<table border="1">
+			
+				<thead>
+					<td>Name</td>
+					<td>Major</td>
+					<td>Num Courses</td>
+					<td>GPA</td>
+					<td>Graph</td>
+				</thead>
+				<c:forEach var="student" items="${students}">
+					<my:row name="${student.name}" major="${student.major}" courses="${student.courses}" gpa="${student.gpa}"/>
+				</c:forEach>
+			</table>
+		</c:if>
+		</c:if>
+	</div>
+</body>
+	</html>
+</jsp:root>

@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
 	<jsp:directive.page contentType="text/html; charset=UTF-8" 
-		pageEncoding="UTF-8" session="false"/>
+		pageEncoding="UTF-8" session="true"/>
 	<jsp:output doctype-root-element="html"
 		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
 		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
 		omit-xml-declaration="true" />
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Oops!</title>
-<link href="style.css" rel="stylesheet"/>
+<title>XML Export</title>
+<link href="style.css" rel="stylesheet" media="all"/>
 </head>
 <body>
-<div class="container">
-	<h1>Oops!</h1>
-	<p>The page you are looking for cannot be found</p>
-	<p>Perhaps you were looking for the <a href="Start">Mortgage Calculator</a></p>
+<div class="conatianer">
+	<h1>The exported XML can be found at:</h1>
+	<h2>
+		<a href="${ xml_file }">${ xml_file }</a>
+	</h2>
 </div>
 </body>
 </html>

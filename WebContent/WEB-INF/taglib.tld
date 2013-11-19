@@ -1,0 +1,35 @@
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+	<description>Tags for Project B</description>
+	<tlib-version>1.0</tlib-version>
+	<short-name>ProjectBTagLibrary</short-name>
+	<tag>
+		<description>Tag to convert StudentBean to a HTML table row</description>
+		<name>row</name>
+		<tag-class>tags.StudentBeanRow</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>major</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>courses</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>int</type>
+		</attribute>
+		<attribute>
+			<name>gpa</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>double</type>
+		</attribute>
+	</tag>
+</taglib>
